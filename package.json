@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/igorklopov/enclose",
   "dependencies": {
+    "module-deps": "git://github.com/igorklopov/module-deps",
     "through": "^2.3.6",
     "through2": "^0.6.3"
   }
