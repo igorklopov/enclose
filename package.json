@@ -1,0 +1,29 @@
+{
+  "name": "enclose",
+  "version": "0.0.0",
+  "description": "Compile your node.js project into a single executable",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igorklopov/enclose.git"
+  },
+  "keywords": [
+    "node",
+    "compile",
+    "bundle",
+    "nexe"
+  ],
+  "author": "Igor Klopov <igor@klopov.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorklopov/enclose/issues"
+  },
+  "homepage": "https://github.com/igorklopov/enclose",
+  "dependencies": {
+    "through": "^2.3.6",
+    "through2": "^0.6.3"
+  }
+}
