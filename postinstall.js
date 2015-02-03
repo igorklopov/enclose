@@ -23,7 +23,7 @@ async.mapSeries(downloads, function(download, cb) {
 
   process.stdout.write("Downloading " + download.name + " ...");
 
-  var name = path.join(__dirname, download.name);
+  var name = path.join(__dirname, "bin", download.name);
 
   async.waterfall([
     function(next) {
