@@ -1,0 +1,91 @@
+{
+  "default": "v0.11.14",
+  "v0.11.14": {
+    "win32": {
+      "enclose": {
+        "name": "enclose-v0.11.14-win32-262c63b.exe",
+        "size": 7922546,
+        "shasum": "c0fcde1666233d27b518423888d5a68397851ab0"
+      },
+      "mksnapshot": {
+        "name": "mksnapshot-v0.11.14-win32-262c63b.exe",
+        "size": 3481088,
+        "shasum": "a3052602c1b5e8b872f872ef1b9baeecc9655df4"
+      }
+    },
+    "win64": {
+      "enclose": {
+        "name": "enclose-v0.11.14-win64-262c63b.exe",
+        "size": 9606477,
+        "shasum": "58cc9a0fe8c67ee5b7ad7b00c726f6e6daf7e9e3"
+      },
+      "mksnapshot": {
+        "name": "mksnapshot-v0.11.14-win64-262c63b.exe",
+        "size": 4241408,
+        "shasum": "0bea28868befe3f4aa635d73f2d61d25f0f52f38"
+      }
+    },
+    "linux-x64": {
+      "enclose": {
+        "name": "enclose-v0.11.14-linux-x64-56b4d6f",
+        "size": 13377978,
+        "shasum": "517efdd1824c784c6ea6f5660d31d5ea8c759e67"
+      },
+      "mksnapshot": {
+        "name": "mksnapshot-v0.11.14-linux-x64-56b4d6f",
+        "size": 6958072,
+        "shasum": "d551791ec420b1d9ab8a6a2d850ccd351a476a33"
+      }
+    },
+    "linux-x86": {
+      "enclose": {
+        "name": "enclose-v0.11.14-linux-x86-60ac17b",
+        "size": 12850238,
+        "shasum": "8585b47e799ae1496380600e8d42e75562aac067"
+      },
+      "mksnapshot": {
+        "name": "mksnapshot-v0.11.14-linux-x86-60ac17b",
+        "size": 6978848,
+        "shasum": "a20babd54e4b0bad2fa934fd7f712fc2957ed7df"
+      }
+    }
+  },
+  "v1.0.4": {
+    "win32": {
+      "enclose": {
+        "name": "enclose-v1.0.4-win32-262c63b.exe",
+        "size": 9173696,
+        "shasum": "bc93a6cdb6715711562eea7d29188f446ec49209"
+      },
+      "mksnapshot": {
+        "name": "mksnapshot-v1.0.4-win32-262c63b.exe",
+        "size": 4232704,
+        "shasum": "e74e1fe3150dc8e80ba2cb3cfbed1dd318ea2ddd"
+      }
+    },
+    "win64": {
+      "enclose": {
+        "name": "enclose-v1.0.4-win64-262c63b.exe",
+        "size": 11654065,
+        "shasum": "65f32880829246b77d50795fe1247b49f9397735"
+      },
+      "mksnapshot": {
+        "name": "mksnapshot-v1.0.4-win64-262c63b.exe",
+        "size": 5285376,
+        "shasum": "63841eeaba93e172a6aa51fabd51b76abf321e00"
+      }
+    },
+    "linux-x64": {
+      "enclose": {
+        "name": "enclose-v1.0.4-linux-x64-56b4d6f",
+        "size": 16276935,
+        "shasum": "36234d2db3442be2821b8516fd5b25f6b43e9cab"
+      },
+      "mksnapshot": {
+        "name": "mksnapshot-v1.0.4-linux-x64-56b4d6f",
+        "size": 8814928,
+        "shasum": "c9d206033279eb2785440a6125e12166c7b46389"
+      }
+    }
+  }
+}
