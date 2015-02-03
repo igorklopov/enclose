@@ -80,22 +80,28 @@ function exec(args) {
     );
   }
 
+  var full = path.join(
+    __dirname,
+    team.enclose.name
+  );
+
+  var c = spawn(full, args);
   var ee = new EventEmitter();
 
-  var c = spawn(
-    path.join(
-      __dirname,
-      team.enclose.name
-    ), args
-  );
+  c.on("error", function(error) {
+    process.stdout.write(full);
+    process.stdout.write(error);
+    ee.emit("error", error);
+  });
 
   c.stdout.on("data", function(chunk) {
     process.stdout.write(chunk);
-    ee.emit("data", chunk);
+    ee.emit("stdout", chunk);
   });
 
   c.stderr.on("data", function(chunk) {
     process.stderr.write(chunk);
+    ee.emit("stderr", chunk);
   });
 
   c.stdout.on("end", function() {
