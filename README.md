@@ -2,4 +2,4 @@
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/igorklopov/enclose?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Compile your node.js project into a single executable
+Compile your node.js project into an executable
