@@ -10,7 +10,7 @@ var http = require("http");
 var async = require("async");
 var crypto = require("crypto");
 var windows = process.platform === "win32";
-var enclose = require("./enclose.js");
+var enclose = require("./bin/enclose.js");
 var downloads = enclose.downloads();
 
 process.stdout.write("Downloading precompiled binaries. Please wait ...\n");
