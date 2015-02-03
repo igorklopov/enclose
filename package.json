@@ -5,7 +5,7 @@
   "bin": "bin/enclose.js",
   "main": "bin/enclose.js",
   "scripts" : {
-    "postinstall": "bin/postinstall.js"
+    "postinstall": "node bin/postinstall.js"
   },
   "repository": {
     "type": "git",
