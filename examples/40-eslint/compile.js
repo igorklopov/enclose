@@ -4,9 +4,9 @@
 
 var path = require("path");
 var enclose = require("../../").exec;
-var x64flag = process.arch === "x64" ? "--x64" : "";
 var windows = process.platform === "win32";
 var wexe = windows ? ".exe" : "";
+var x64 = process.arch === "x64";
 
 try {
   var eslint = path.dirname(require.resolve("eslint"));
@@ -23,6 +23,6 @@ var source = path.join(
 enclose([
   "--config", "./config.js",
   "--output", "./eslint" + wexe,
-  x64flag,
+  x64 ? "--x64" : "",
   source
 ]);

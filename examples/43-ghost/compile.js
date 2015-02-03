@@ -6,6 +6,7 @@ var path = require("path");
 var enclose = require("../../").exec;
 var windows = process.platform === "win32";
 var wexe = windows ? ".exe" : "";
+var x64 = process.arch === "x64";
 
 try {
   var ghost = path.dirname(require.resolve("ghost"));
@@ -22,5 +23,6 @@ var source = path.join(
 enclose([
   "--config", "./config.js",
   "--output", "./ghost" + wexe,
+  x64 ? "--x64" : "",
   source
 ]);
