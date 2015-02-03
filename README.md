@@ -133,3 +133,11 @@ with minimal adjustments.
 
 EncloseJS supports Linux and Windows.
 Mac OS is on the way.
+
+### Sources of EncloseJS
+
+While the project is in beta stage,
+the sources stay closed. BTW EncloseJS
+is compiled with EncloseJS, so you
+may try to extract the sources from
+binaries ;)
