@@ -66,19 +66,17 @@ into native code at compile-time using
 Hence, your sources are not required to
 execute the box, and they are not packaged.
 
-No. Due to JavaScript dynamic nature,
-optimized native code is generated
-using information, collected at run-time.
-Without that run-time info EncloseJS
-can generate only "unoptimized" code.
-It runs about 2x slower, than optimized
-one.
+No. Optimized native code can be generated
+only at run-time, using information
+collected at run-time. Without that
+information EncloseJS can generate
+only "unoptimized" code. It runs about
+2x slower, than optimized one.
 
 Also, io.js code is put inside the box
-(along with your code) to support all
-io.js low level functionality for your
-application at run-time. This increases
-output file size.
+(along with your code) to support io.js
+API for your application at run-time.
+This increases output file size.
 
 So, this is not that static compilation
 we used to know. But nevertheless you
