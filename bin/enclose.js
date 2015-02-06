@@ -85,25 +85,37 @@ function exec(args) {
 
   var c = spawn(full, args);
   var ee = new EventEmitter();
+  var counter = 0;
 
   c.on("error", function(error) {
     process.stdout.write(full);
-    process.stdout.write(error);
+    process.stdout.write(error.toString());
     ee.emit("error", error);
+  });
+
+  function maybe_exit() {
+    if (++counter < 3) return;
+    ee.emit("exit");
+  }
+
+  c.stderr.on("data", function(chunk) {
+    process.stderr.write(chunk);
+  });
+
+  c.stderr.on("end", function() {
+    maybe_exit();
   });
 
   c.stdout.on("data", function(chunk) {
     process.stdout.write(chunk);
-    ee.emit("stdout", chunk);
-  });
-
-  c.stderr.on("data", function(chunk) {
-    process.stderr.write(chunk);
-    ee.emit("stderr", chunk);
   });
 
   c.stdout.on("end", function() {
-    ee.emit("end");
+    maybe_exit();
+  });
+
+  c.on("exit", function() {
+    maybe_exit();
   });
 
   return ee;
