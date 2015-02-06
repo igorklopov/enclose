@@ -46,12 +46,10 @@ function get_arch(args) {
 function get_suffix(arch) {
   return {
     win32: {
-      ia32: "win32",
       x86: "win32",
       x64: "win64"
     },
     linux: {
-      ia32: "linux-x86",
       x86: "linux-x86",
       x64: "linux-x64"
     }
