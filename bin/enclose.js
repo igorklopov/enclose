@@ -19,7 +19,7 @@ var binaries_json = JSON.parse(
   ), "utf8"
 );
 
-function getVersionString(args) {
+function get_version_string(args) {
   var pos =
     (args.indexOf("-v") + 1) ||
     (args.indexOf("--version") + 1);
@@ -27,15 +27,15 @@ function getVersionString(args) {
   return args[pos];
 }
 
-function getVersion(args) {
-  var v = getVersionString(args);
+function get_version(args) {
+  var v = get_version_string(args);
   if (!v) v = binaries_json.default;
   var version = binaries_json[v] ||
                 binaries_json["v" + v];
   return version;
 }
 
-function getArch(args) {
+function get_arch(args) {
   var pos =
     (args.indexOf("-x") + 1) ||
     (args.indexOf("--x64") + 1);
@@ -43,7 +43,7 @@ function getArch(args) {
   return "x86";
 }
 
-function getSuffix(arch) {
+function get_suffix(arch) {
   return {
     win32: {
       ia32: "win32",
@@ -60,7 +60,7 @@ function getSuffix(arch) {
 
 function exec(args) {
 
-  var version = getVersion(args);
+  var version = get_version(args);
 
   if (!version) {
     throw new Error(
@@ -69,8 +69,8 @@ function exec(args) {
     );
   }
 
-  var arch = getArch(args);
-  var suffix = getSuffix(arch);
+  var arch = get_arch(args);
+  var suffix = get_suffix(arch);
   var team = version[suffix];
 
   if (!team) {
@@ -123,7 +123,7 @@ function children(o, cb) {
 function downloads() {
 
   var suffixes = [
-    getSuffix("x86"), getSuffix("x64")
+    get_suffix("x86"), get_suffix("x64")
   ];
 
   var items = [];
