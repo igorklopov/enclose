@@ -120,9 +120,15 @@ function children(o, cb) {
 
 function downloads() {
 
-  var suffixes = [
-    get_suffix("x86"), get_suffix("x64")
-  ];
+  var suffixes = {
+    ia32: [
+      get_suffix("x86")
+    ],
+    x64: [
+      get_suffix("x86"),
+      get_suffix("x64")
+    ]
+  }[process.arch];
 
   var items = [];
 
