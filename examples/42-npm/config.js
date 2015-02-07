@@ -71,6 +71,7 @@ module.exports = {
         // graceful-fs is used, called 'fs'.
         // enclosejs virtual fs should be used
         "JSON.parse(fs.readFileSync(",
+        "require('smalloc'); " +
         "JSON.parse(require('fs').readFileSync("
       );
 
