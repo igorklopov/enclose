@@ -3,102 +3,102 @@
   "v0.11.14": {
     "win32": {
       "enclose": {
-        "name": "enclose-v0.11.14-win32-cd9caec.exe",
-        "size": 7923082,
-        "shasum": "a877385067a58e163ed0beaddedbd71cc4c317d5",
-        "location": "http://enclosejs.s3.amazonaws.com/enclose-v0.11.14-win32-cd9caec.exe"
+        "name": "enclose-v0.11.14-win32-47e1dc8.exe",
+        "size": 7923759,
+        "shasum": "0a35a645294204004498077c1c4d1617227ce817",
+        "location": "http://enclosejs.s3.amazonaws.com/enclose-v0.11.14-win32-47e1dc8.exe"
       },
       "mksnapshot": {
-        "name": "mksnapshot-v0.11.14-win32-cd9caec.exe",
+        "name": "mksnapshot-v0.11.14-win32-47e1dc8.exe",
         "size": 3481088,
-        "shasum": "c6603bc2801069947e2f6c1b600979ac693efaf4",
-        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v0.11.14-win32-cd9caec.exe"
+        "shasum": "3a45b80d3f9cb9d3e58bf83148096e2b1895accf",
+        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v0.11.14-win32-47e1dc8.exe"
       }
     },
     "win64": {
       "enclose": {
-        "name": "enclose-v0.11.14-win64-cd9caec.exe",
-        "size": 9607246,
-        "shasum": "913fd79c22dbbdd3f77f1a2760cbe1410ee4d8c8",
-        "location": "http://enclosejs.s3.amazonaws.com/enclose-v0.11.14-win64-cd9caec.exe"
+        "name": "enclose-v0.11.14-win64-47e1dc8.exe",
+        "size": 9608772,
+        "shasum": "1d38bd14b088f4347e520234efc1dc5e5858ae04",
+        "location": "http://enclosejs.s3.amazonaws.com/enclose-v0.11.14-win64-47e1dc8.exe"
       },
       "mksnapshot": {
-        "name": "mksnapshot-v0.11.14-win64-cd9caec.exe",
+        "name": "mksnapshot-v0.11.14-win64-47e1dc8.exe",
         "size": 4241408,
-        "shasum": "58d72b38595241ba4595cd802476161e485a5cc7",
-        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v0.11.14-win64-cd9caec.exe"
+        "shasum": "33f7b71d72274f38fe36c19e96ed29bb5d41bac1",
+        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v0.11.14-win64-47e1dc8.exe"
       }
     },
     "linux-x64": {
       "enclose": {
-        "name": "enclose-v0.11.14-linux-x64-cd9caec",
-        "size": 13378262,
-        "shasum": "3551ffd572b98fb8c24bf9c6b03230150d2c1430",
-        "location": "http://enclosejs.s3.amazonaws.com/enclose-v0.11.14-linux-x64-cd9caec"
+        "name": "enclose-v0.11.14-linux-x64-47e1dc8",
+        "size": 13379613,
+        "shasum": "2442070c5d3a7d13e6d92bc28fe16e8a8d0c7eef",
+        "location": "http://enclosejs.s3.amazonaws.com/enclose-v0.11.14-linux-x64-47e1dc8"
       },
       "mksnapshot": {
-        "name": "mksnapshot-v0.11.14-linux-x64-cd9caec",
+        "name": "mksnapshot-v0.11.14-linux-x64-47e1dc8",
         "size": 6958072,
         "shasum": "d551791ec420b1d9ab8a6a2d850ccd351a476a33",
-        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v0.11.14-linux-x64-cd9caec"
+        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v0.11.14-linux-x64-47e1dc8"
       }
     },
     "linux-x86": {
       "enclose": {
-        "name": "enclose-v0.11.14-linux-x86-cd9caec",
-        "size": 12850658,
-        "shasum": "c7d7c4349e1f62988c611839f24336ba1e43c303",
-        "location": "http://enclosejs.s3.amazonaws.com/enclose-v0.11.14-linux-x86-cd9caec"
+        "name": "enclose-v0.11.14-linux-x86-47e1dc8",
+        "size": 12850896,
+        "shasum": "ef3fb560f22523cd48d0c457ff84b6cfd1bcfa1f",
+        "location": "http://enclosejs.s3.amazonaws.com/enclose-v0.11.14-linux-x86-47e1dc8"
       },
       "mksnapshot": {
-        "name": "mksnapshot-v0.11.14-linux-x86-cd9caec",
+        "name": "mksnapshot-v0.11.14-linux-x86-47e1dc8",
         "size": 6978848,
         "shasum": "a20babd54e4b0bad2fa934fd7f712fc2957ed7df",
-        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v0.11.14-linux-x86-cd9caec"
+        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v0.11.14-linux-x86-47e1dc8"
       }
     }
   },
   "v1.1.0": {
     "win32": {
       "enclose": {
-        "name": "enclose-v1.1.0-win32-cd9caec.exe",
-        "size": 9180362,
-        "shasum": "2f84609400c6ee02b308543ddc709b786fe8e84b",
-        "location": "http://enclosejs.s3.amazonaws.com/enclose-v1.1.0-win32-cd9caec.exe"
+        "name": "enclose-v1.1.0-win32-47e1dc8.exe",
+        "size": 9182417,
+        "shasum": "c17ad6fd753f962dcccb71b13d39a324d8154a4a",
+        "location": "http://enclosejs.s3.amazonaws.com/enclose-v1.1.0-win32-47e1dc8.exe"
       },
       "mksnapshot": {
-        "name": "mksnapshot-v1.1.0-win32-cd9caec.exe",
+        "name": "mksnapshot-v1.1.0-win32-47e1dc8.exe",
         "size": 4233216,
-        "shasum": "0a303269dfd5a8b929f0f1f120fdce4d0251d87e",
-        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v1.1.0-win32-cd9caec.exe"
+        "shasum": "60f03d597ca4cf50b5d488e9e1c331cf5a49b5da",
+        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v1.1.0-win32-47e1dc8.exe"
       }
     },
     "win64": {
       "enclose": {
-        "name": "enclose-v1.1.0-win64-cd9caec.exe",
-        "size": 11664408,
-        "shasum": "c1cd0495dc4a5e144d73f08f7506591864a22aa2",
-        "location": "http://enclosejs.s3.amazonaws.com/enclose-v1.1.0-win64-cd9caec.exe"
+        "name": "enclose-v1.1.0-win64-47e1dc8.exe",
+        "size": 11665949,
+        "shasum": "82310b717aab7f20b1530cc4a061ad282a75c1b2",
+        "location": "http://enclosejs.s3.amazonaws.com/enclose-v1.1.0-win64-47e1dc8.exe"
       },
       "mksnapshot": {
-        "name": "mksnapshot-v1.1.0-win64-cd9caec.exe",
+        "name": "mksnapshot-v1.1.0-win64-47e1dc8.exe",
         "size": 5285888,
-        "shasum": "c8b478375968bc168f570c2010523632bc849a31",
-        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v1.1.0-win64-cd9caec.exe"
+        "shasum": "7f3bdc5ef5f3762dd827f74064a39a0bf2469550",
+        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v1.1.0-win64-47e1dc8.exe"
       }
     },
     "linux-x64": {
       "enclose": {
-        "name": "enclose-v1.1.0-linux-x64-cd9caec",
-        "size": 16319895,
-        "shasum": "634ab3bcfcd53ad0b4f94dbd9ce932fe78ebc1e8",
-        "location": "http://enclosejs.s3.amazonaws.com/enclose-v1.1.0-linux-x64-cd9caec"
+        "name": "enclose-v1.1.0-linux-x64-47e1dc8",
+        "size": 16322561,
+        "shasum": "84f5876df90abbb002e5986d099aa90d044cfb78",
+        "location": "http://enclosejs.s3.amazonaws.com/enclose-v1.1.0-linux-x64-47e1dc8"
       },
       "mksnapshot": {
-        "name": "mksnapshot-v1.1.0-linux-x64-cd9caec",
+        "name": "mksnapshot-v1.1.0-linux-x64-47e1dc8",
         "size": 8814928,
         "shasum": "4acc638a879631a5b351e19f1af333c19ddcb2c8",
-        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v1.1.0-linux-x64-cd9caec"
+        "location": "http://enclosejs.s3.amazonaws.com/mksnapshot-v1.1.0-linux-x64-47e1dc8"
       }
     }
   }
