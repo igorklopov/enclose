@@ -109,8 +109,8 @@ parts, ready for bundling.
 ### Both io.js and node.js
 
 You can choose what runtime to wrap your
-project in - io.js 1.0.x or node.js
-0.11.x. Both branches are supported.
+project in - io.js or node.js 0.11.x.
+Both branches are supported.
 
 ### Vanilla io.js
 
