@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
+/* eslint curly:0 */
+
 var enclose = require("../../").exec;
+var flags = [];
 var x64 = process.arch === "x64";
-var x64flag = x64 ? ["--x64"] : [];
-enclose(x64flag.concat([ "./index.js" ]));
+if (x64) flags.push("--x64");
+flags.push("./index.js");
+enclose(flags);

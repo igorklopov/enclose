@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 
+/* eslint curly:0 */
 /* eslint no-process-exit:0 */
 
 var path = require("path");
 var enclose = require("../../").exec;
+var flags = [];
 var windows = process.platform === "win32";
 var wexe = windows ? ".exe" : "";
 var x64 = process.arch === "x64";
-var x64flag = x64 ? ["--x64"] : [];
+if (x64) flags.push("--x64");
 
 try {
   var browserify = path.dirname(require.resolve("browserify"));
@@ -17,12 +19,7 @@ try {
   process.exit(1);
 }
 
-var source = path.join(
-  browserify, "bin", "cmd.js"
-);
-
-enclose(x64flag.concat([
-  "--config", "./config.js",
-  "--output", "./browserify" + wexe,
-  source
-]));
+flags.push("--config", "./config.js");
+flags.push("--output", "./browserify" + wexe);
+flags.push(path.join(browserify, "bin/cmd.js"));
+enclose(flags);

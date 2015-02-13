@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
+/* eslint curly:0 */
+
 var enclose = require("../../").exec;
+var flags = [];
 var x64 = process.arch === "x64";
-var x64flag = x64 ? ["--x64"] : [];
+if (x64) flags.push("--x64");
 
-enclose(x64flag.concat([
+// enclosejs unites options from command
+// line and from config.js. transforms can
+// be passed only from config.js
 
-  // takes other options from config.js
-  // transforms can be passed only in config
-
-  "--config", "./config.js",
-  "./index.js"
-]));
+flags.push("--config", "./config.js");
+flags.push("./index.js");
+enclose(flags);
