@@ -36,6 +36,10 @@ function get_version(args) {
 }
 
 function get_arch(args) {
+  var help64 =
+    (args.length === 0) &&
+    (process.arch === "x64");
+  if (help64) return "x64";
   var pos =
     (args.indexOf("-x") + 1) ||
     (args.indexOf("--x64") + 1);
