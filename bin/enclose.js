@@ -151,7 +151,7 @@ function downloads() {
   children(binaries_json, function(version) {
     if (typeof version !== "object") return; // "default" string
     children(version, function(suffix, key) {
-      if (suffixes.indexOf(key) < 0) return;
+      if (suffixes.indexOf(key) < 0) return; // *****
       children(suffix, function(binary) {
         items.push(binary);
       });
