@@ -101,8 +101,9 @@ vanilla.
 
 You are not limited by the size of project. Big projects like `npm`,
 `browserify`, `eslint` can be easily compiled using EncloseJS (see
-examples directory). Probably, your existing project can be compiled
-too, with minimal adjustments.
+[examples directory](https://github.com/igorklopov/enclose/tree/master/examples/42-npm)).
+Probably, your existing project can be compiled too, with minimal
+adjustments.
 
 ### Platforms
 
