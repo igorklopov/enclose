@@ -9,6 +9,7 @@ Compile your node.js project into an executable
 * Make a commercial version of your application without sources.
 * Make a demo/evaluation/trial version of your app without sources.
 * Make some kind of self-extracting archive or installer.
+* Make a closed source GUI application using [node-thrust](https://github.com/breach/node-thrust).
 * No need to install node and npm to deploy the compiled application.
 * No need to download hundreds of files via `npm install` to deploy
 your application. Deploy it as a single independent file.
