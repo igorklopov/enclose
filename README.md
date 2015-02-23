@@ -107,7 +107,7 @@ adjustments.
 
 ### Platforms
 
-EncloseJS supports Linux and Windows. Mac OS is on the way.
+EncloseJS supports Linux, Windows and Mac OS X.
 
 ### Sources of EncloseJS
 
