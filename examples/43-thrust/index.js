@@ -14,5 +14,7 @@ require("node-thrust")(function(error, api) {
   });
   w.show();
 }, {
-  exec_path: "./node_modules/node-thrust/vendor/thrust/thrust_shell"
+  exec_path: process.platform === "darwin" ?
+    "./node_modules/node-thrust/vendor/thrust/ThrustShell.app/Contents/MacOS/ThrustShell" :
+    "./node_modules/node-thrust/vendor/thrust/thrust_shell"
 });
