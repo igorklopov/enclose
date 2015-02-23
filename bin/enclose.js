@@ -56,6 +56,10 @@ function get_suffix(arch) {
     linux: {
       x86: "linux-x86",
       x64: "linux-x64"
+    },
+    darwin: {
+      x86: "darwin-x86",
+      x64: "darwin-x64"
     }
   }[process.platform][arch];
 }
@@ -86,6 +90,13 @@ function exec(args) {
     __dirname,
     team.enclose.name
   );
+
+  if ((args.indexOf("--color") < 0) &&
+      (args.indexOf("--no-color") < 0)) {
+    if (process.stdout.isTTY) {
+      args.push("--color");
+    }
+  }
 
   var c = spawn(full, args);
   var ee = new EventEmitter();
