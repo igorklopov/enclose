@@ -22,11 +22,11 @@ your application. Deploy it as a single independent file.
 npm install enclose
 ```
 
-### The box
+### The package
 
 As input you specify the entry file of your project `/path/project.js`.
-As output you get a standalone executable `/path/project`. Briefly
-"the box". When it is run, it does the same as `node /path/project.js`.
+As output you get a standalone executable `/path/project`. When it is
+run, it does the same as `node /path/project.js`.
 
 ### Command line
 
@@ -35,14 +35,14 @@ Command line call `./project a b` is equivalent to `node ./project.js a b`.
 ### Dependencies
 
 The compiler parses your sources, detects calls to `require`, traverses
-the dependencies of your project and includes them into the box. You
+the dependencies of your project and includes them into the package. You
 don't need to list them manually.
 
 ### Assets
 
 If your project has assets (html templates, css, etc), for example to
-serve via http, you can bundle them into the box. Just list them as a
-[globby](https://github.com/sindresorhus/globby) in the configuration
+serve via http, you can bundle them into the package. Just list them
+as a [glob](https://github.com/sindresorhus/globby) in the configuration
 file.
 
 ### Compilation? Srsly?
@@ -60,9 +60,9 @@ information collected at run-time. Without that information EncloseJS
 can generate only "unoptimized" code. It runs about 2x slower, than
 optimized one.
 
-Also, node code is put inside the box (along with your code) to support
-node API for your application at run-time. This increases output file
-size.
+Also, node.js code is put inside the executable (along with your code)
+to support node API for your application at run-time. This increases
+output file size.
 
 So, this is not that static compilation we used to know. But nevertheless
 you get fully functional binary without sources. Also, performance and
@@ -89,7 +89,7 @@ io.js. Both branches are supported.
 ### Fast
 
 It takes seconds to make an executable. You dont need to build
-node/io.js from sources in order to make the box. EncloseJS is
+node/io.js from sources in order to make the binary. EncloseJS is
 shipped with precompiled parts, ready for bundling.
 
 ### Vanilla node
