@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "grunt": "*",
+    "grunt-download-atom-shell": "*" 
+  }
+}
