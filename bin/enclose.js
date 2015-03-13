@@ -2,6 +2,7 @@
 
 /* eslint camelcase:0 */
 /* eslint curly:0 */
+/* eslint no-process-exit:0 */
 
 "use strict";
 
@@ -9,15 +10,24 @@ var fs = require("fs");
 var path = require("path");
 var spawn = require("child_process").spawn;
 var EventEmitter = require("events").EventEmitter;
+var binaries_json_name = "binaries.json";
 
-var binaries_json = JSON.parse(
-  fs.readFileSync(
-    path.join(
-      __dirname,
-      "binaries.json"
-    )
-  ), "utf8"
-);
+try {
+  var binaries_json = JSON.parse(
+    fs.readFileSync(
+      path.join(
+        __dirname,
+        binaries_json_name
+      )
+    ), "utf8"
+  );
+} catch(error) {
+  console.log(
+    "File '" + binaries_json_name +
+    "' not found. Reinstall EncloseJS"
+  );
+  process.exit();
+}
 
 function get_version_string(args) {
   var pos =
@@ -69,10 +79,11 @@ function exec(args) {
   var version = get_version(args);
 
   if (!version) {
-    throw new Error(
-      "Bad version. " +
-      "See 'binaries.json'"
+    console.log(
+      "Bad version. See file '" +
+      binaries_json_name + "'"
     );
+    process.exit();
   }
 
   var arch = get_arch(args);

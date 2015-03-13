@@ -9,12 +9,13 @@ var x64 = process.arch === "x64";
 if (x64) flags.push("--x64");
 
 try {
-  require("lodash");
+  require.resolve("serialport");
 } catch(error) {
-  console.log("Failed to require('lodash')");
+  console.log("Failed to require('serialport')");
   console.log("Please run 'npm install' here");
   process.exit(1);
 }
 
+flags.push("--config", "./config.js");
 flags.push("./index.js");
 enclose(flags);

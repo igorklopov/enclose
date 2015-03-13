@@ -9,9 +9,9 @@ var x64 = process.arch === "x64";
 if (x64) flags.push("--x64");
 
 try {
-  require.resolve("node-thrust");
+  require.resolve("oracle");
 } catch(error) {
-  console.log("Failed to require('node-thrust')");
+  console.log("Failed to require('oracle')");
   console.log("Please run 'npm install' here");
   process.exit(1);
 }
