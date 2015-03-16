@@ -16,6 +16,5 @@ try {
   process.exit(1);
 }
 
-flags.push("--config", "./config.js");
 flags.push("./index.js");
 enclose(flags);
