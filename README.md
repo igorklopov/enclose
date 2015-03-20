@@ -19,7 +19,7 @@ your application. Deploy it as a single independent file.
 ### Install
 
 ```
-npm install enclose
+npm install -g enclose
 ```
 
 ### The package
