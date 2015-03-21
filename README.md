@@ -81,22 +81,20 @@ myfunc.toString()
 function myfunc() { [native code] }
 ```
 
-### Both node and io.js
+### Node and io.js
 
 You can choose what runtime to wrap your project in - node 0.12.x or
 io.js. Both branches are supported.
+
+EncloseJS project does not aim to add new features to node, to avoid
+undesirable issues and to have predictable stability. Let's keep it
+vanilla.
 
 ### Fast
 
 It takes seconds to make an executable. You dont need to build
 node/io.js from sources in order to make the binary. EncloseJS is
 shipped with precompiled parts, ready for bundling.
-
-### Vanilla node
-
-EncloseJS project does not aim to add new features to node, to avoid
-undesirable issues and to have predictable stability. Let's keep it
-vanilla.
 
 ### Unlimited code
 
@@ -108,7 +106,31 @@ adjustments.
 
 ### Platforms
 
-EncloseJS supports Linux, Windows and Mac OS X.
+EncloseJS can build executables for Linux, Windows and Mac OS X.
+
+- You can only build Windows executables (.exe) on Windows platform.
+Same for Unix and Mac.
+- Cross compilation is not currently supported.
+- If you don't have the OS installed, you can use a VM such as VirtualBox
+or VMWare and compile your executable in that OS.
+
+### Node runtime
+
+Currently the size of built executables is 5-7 MB, due to node runtime.
+Each executable has the node runtime packaged with it (captive runtime).
+
+### Native modules
+
+Native modules are supported (.node files), for all platforms. [(more info)](https://github.com/igorklopov/enclose/issues/12#issuecomment-82587865)
+- Enclose cannot package a native module inside the executable.
+- You have to package your native modules along with your final executable,
+and `require` that native module at runtime. 
+- You have to compile native module against Node 0.12.
+- If you are having trouble porting your native module to 0.12, use [NAN](https://github.com/rvagg/nan)
+- On Windows, when you run the app, Enclose creates a copy of the native module,
+ but it is not a copy, if you compare, you will see differences.
+ Native modules require executable name to be 'node.exe',
+ so EncloseJS patches the IAT of native module before `dlopen` and binds it to 'myserver.exe'. 
 
 ### License
 
