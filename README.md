@@ -122,12 +122,14 @@ packaged with it (captive runtime).
 ### Native modules
 
 Native modules are supported (.node files), for all platforms
-([more info](https://github.com/igorklopov/enclose/issues/12#issuecomment-82587865)).
+([more info](https://github.com/igorklopov/enclose/issues/12#issuecomment-82587865),
+[serialport example](https://github.com/igorklopov/enclose/tree/master/examples/24-serialport),
+[oracle example](https://github.com/igorklopov/enclose/tree/master/examples/25-oracle)).
 - EncloseJS cannot package a native module inside the executable.
 - You have to package your native modules along with your final
 executable, and `require` that native module at runtime.
 - You have to compile native module against node 0.12.x or io.js 1.x.
-- If you are having trouble porting your native module, use [NAN](https://github.com/rvagg/nan)
+- If you are having trouble porting your native module, use [NAN](https://github.com/rvagg/nan).
 - On Windows, native module (built with node-gyp) requires executable
 name to be 'node.exe'. So in order to make it compatible with your
 'myserver.exe' EncloseJS makes a copy of the native module, patches
