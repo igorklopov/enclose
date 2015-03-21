@@ -121,10 +121,11 @@ packaged with it (captive runtime).
 
 ### Native modules
 
-Native modules are supported (.node files), for all platforms
+Native modules (.node files) are supported, for all platforms
 ([more info](https://github.com/igorklopov/enclose/issues/12#issuecomment-82587865),
 [serialport example](https://github.com/igorklopov/enclose/tree/master/examples/24-serialport),
 [oracle example](https://github.com/igorklopov/enclose/tree/master/examples/25-oracle)).
+
 - EncloseJS cannot package a native module inside the executable.
 - You have to package your native modules along with your final
 executable, and `require` that native module at runtime.
