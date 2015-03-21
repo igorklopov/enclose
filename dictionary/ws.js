@@ -3,7 +3,7 @@ module.exports = {
   patches: {
 
     // TODO temporary solution
-    // fix after require("silent")
+    // fix after require('...', 'option')
 
     "lib/BufferUtil.js": [
       "*",

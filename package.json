@@ -1,6 +1,6 @@
 {
   "name": "enclose",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Compile your node.js project into an executable",
   "bin": "bin/enclose.js",
   "main": "bin/enclose.js",
