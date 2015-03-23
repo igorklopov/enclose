@@ -115,9 +115,13 @@ or VMWare and compile your executable in that OS.
 
 ### Node runtime
 
-Currently the size of built executables is additionally increased by
-5-7 MB, due to node runtime. Each executable has the node runtime
-packaged with it (captive runtime).
+Currently the size of built executables is increased due to node runtime.
+Each executable has the node runtime packaged with it (captive runtime).
+
+Typical sizes of final executable by platform:
+- Windows : 7 MB
+- Unix : 15 MB
+- Mac OSX : 15 MB
 
 ### Native modules
 
