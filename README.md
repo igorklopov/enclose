@@ -100,7 +100,7 @@ shipped with precompiled parts, ready for bundling.
 
 You are not limited by the size of project. Big projects like `npm`,
 `browserify`, `eslint` can be easily compiled using EncloseJS (see
-[examples directory](https://github.com/igorklopov/enclose/tree/master/examples/42-npm)).
+[examples directory](https://github.com/igorklopov/enclose/tree/master/examples/22-npm)).
 Probably, your existing project can be compiled too, with minimal
 adjustments.
 
@@ -109,28 +109,33 @@ adjustments.
 EncloseJS can build executables for Linux, Windows and Mac OS X.
 
 - You can only build Windows executables (.exe) on Windows platform.
-Same for Unix and Mac.
-- Cross compilation is not currently supported.
+Same for Unix and Mac. Cross compilation is not currently supported.
 - If you don't have the OS installed, you can use a VM such as VirtualBox
 or VMWare and compile your executable in that OS.
 
 ### Node runtime
 
-Currently the size of built executables is 5-7 MB, due to node runtime.
-Each executable has the node runtime packaged with it (captive runtime).
+Currently the size of built executables is additionally increased by
+5-7 MB, due to node runtime. Each executable has the node runtime
+packaged with it (captive runtime).
 
 ### Native modules
 
-Native modules are supported (.node files), for all platforms. [(more info)](https://github.com/igorklopov/enclose/issues/12#issuecomment-82587865)
-- Enclose cannot package a native module inside the executable.
-- You have to package your native modules along with your final executable,
-and `require` that native module at runtime. 
-- You have to compile native module against Node 0.12.
-- If you are having trouble porting your native module to 0.12, use [NAN](https://github.com/rvagg/nan)
-- On Windows, when you run the app, Enclose creates a copy of the native module,
- but it is not a copy, if you compare, you will see differences.
- Native modules require executable name to be 'node.exe',
- so EncloseJS patches the IAT of native module before `dlopen` and binds it to 'myserver.exe'. 
+Native modules (.node files) are supported, for all platforms
+([more info](https://github.com/igorklopov/enclose/issues/12#issuecomment-82587865),
+[serialport example](https://github.com/igorklopov/enclose/tree/master/examples/24-serialport),
+[oracle example](https://github.com/igorklopov/enclose/tree/master/examples/25-oracle)).
+
+- EncloseJS cannot package a native module inside the executable.
+- You have to package your native modules along with your final
+executable, and `require` that native module at runtime.
+- You have to compile native module against node 0.12.x or io.js 1.x.
+- If you are having trouble porting your native module, use [NAN](https://github.com/rvagg/nan).
+- On Windows, native module (built with node-gyp) requires executable
+name to be 'node.exe'. So in order to make it compatible with your
+'myserver.exe' EncloseJS makes a copy of the native module, patches
+IAT of the copy (binds it to 'myserver.exe'), and then calls `dlopen`
+against the copy.
 
 ### License
 
