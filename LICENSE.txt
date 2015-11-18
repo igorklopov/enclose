@@ -1,0 +1,68 @@
+(c) 2015 Igor Klopov
+
+ELECTRONIC END USER LICENSE AGREEMENT
+for EncloseJS - JavaScript Compiler and Software Protection System
+
+NOTICE TO USER:
+THIS IS A CONTRACT. BY INSTALLING THIS SOFTWARE YOU ACCEPT ALL THE TERMS AND CONDITIONS OF THIS AGREEMENT.
+
+Please read this carefully before You download/use this software "EncloseJS". This is a legally binding agreement
+between You and Igor Klopov. By installing, copying or otherwise using any of my software products include
+upgrades, source codes and related documentation for any purpose, You are agreeing to be bound by this license
+including without limitation the exclusions and limitations of My liability contained therein. If You don't agree
+with the terms and conditions of this license You may not install, copy or otherwise use EncloseJS.
+
+a.) EncloseJS is protected by copyright laws and international copyright treaties, as well as other intellectual
+    property laws and treaties. EncloseJS is licensed, not sold. You aren't permitted to install or use EncloseJS
+    except in accordance with license. In consideration of your agreement to the terms of this license,
+    Igor Klopov grant you a non-exclusive right to install and use EncloseJS as permitted by this license.
+
+b.) You agree not to install or use any individual copy of EncloseJS on more than one computer at a time and not via
+    any network or by means of remote or other access. This provision is only for individual copies and does not
+    apply to multi-system licenses or evaluation version. If EncloseJS was purchased by your employer You agree to
+    get your's employer's explicit permission before installing EncloseJS on multiple computers as described here.
+
+c.) If You purchased a multi-system license "company license" for EncloseJS You agree to install or use EncloseJS on
+    company's computers only.
+
+d.) When You purchase EncloseJS, You will receive the registered version of EncloseJS. You may not publish or distribute
+    this code by any means. If You do, your license to use EncloseJS is automatically terminated, and You must remove
+    EncloseJS from your computer or computers.
+
+e.) Except as stated above, Igor Klopov disclaim any and all warranties, express or implied, written or oral,
+    including any implied warranties of merchantability or fitness for a particular purpose.
+
+f.) Igor Klopov cannot promise EncloseJS will be free of bugs or program errors, but if You report a program
+    error or bug to Igor Klopov, then Igor Klopov will do his best to correct it.
+
+g.) In no event shall Igor Klopov be liable for any incidental, consequential, or punitive damages whatsoever
+    arising out of use EncloseJS or your relationship with Igor Klopov. Note that some states do not allow
+    exclusion or limitation of liability for incidental or consequential damages, therefore the above limitation
+    may not apply to You.
+
+h.) You are permitted to make a back-up copy of EncloseJS in support of Your permitted use of EncloseJS provided You
+    label the back-up copy with the Igor Klopov copyright notice. Any other copies of the whole or any part of
+    EncloseJS are unlawful.
+
+i.) You may not nor permit or allow others to sell, distribute, rent, loan, lease, sub-license or otherwise deal
+    in EncloseJS.
+
+j.) You may not nor permit or allow others to alter, adapt, merge, modify or translate EncloseJS in any way for any
+    purpose, including, without limitation, for error correction.
+
+k.) You may not nor permit or allow others to reverse-engineer, disassemble or decompile EncloseJS.
+
+l.) Compiled applications can be distributed by a number of ways, depending on each developer/company. The distribution
+    process is free of charge or obligation from Igor Klopov. Igor Klopov allows you Royalty Free distribution
+    of compiled applications.
+
+m.) Subject to the terms and conditions of this License Agreement, Igor Klopov will grant you a nontransferable
+    license to use this software. If you hold a "single developer license", you may use this software for protecting any
+    software that you developed or software that you own legally (according to the copyright laws). Holding a "company
+    license" enables you to use the software for protecting any software developed inside the company or software that
+    the company legally owns (according to the copyright laws).
+
+n.) You shall comply with all relevant import and export laws, rules and regulations affecting EncloseJS or any portion
+    of it including, without limitation. Regardless of any disclosure made by to Igor Klopov destination of
+    EncloseJS, You will not export or re-export, directly or indirectly, EncloseJS without first obtaining all written
+    consents or authorizations which may be required by any such laws, rules or regulations.
