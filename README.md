@@ -1,6 +1,10 @@
 # EncloseJS
 
-![Hello, world!](screenshot.png)
+Compile your Node.js project into an executable
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/igorklopov/enclose?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+![Hello, world!](http://enclosejs.com/screenshot.png)
 
 ### Use cases
 
