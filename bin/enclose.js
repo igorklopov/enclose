@@ -125,7 +125,13 @@ function exec(args, cb) {
     ));
   }
 
-  var arch = get_arch_from_args(args);
+  var arch;
+
+  if (args.length) {
+    arch = get_arch_from_args(args);
+  } else {
+    arch = get_system();
+  }
 
   if (!arch) {
     return cb(new Error(
@@ -162,10 +168,18 @@ function exec(args, cb) {
   c.on("error", function(error) {
     assert(counter < 3);
     if (error.code === "ENOENT") {
-      cb(new Error(
-       "Compiler not found for " +
-        version_obj.version + "-" + suffix
-      ));
+      if (fs.existsSync(full)) {
+        cb(new Error(
+         "Your OS does not support " +
+          version_obj.version + "-" + suffix + ". " +
+          "Run with or without --x64 flag."
+        ));
+      } else {
+        cb(new Error(
+         "Compiler not found for " +
+          version_obj.version + "-" + suffix
+        ));
+      }
     } else {
       cb(error);
     }
