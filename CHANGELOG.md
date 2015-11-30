@@ -1,3 +1,8 @@
+## 1.0.2 (2015-11-30)
+
+ - not debuggable via SIGUSR1
+ - partially fixed #69
+
 ## 1.0.1 (2015-11-21)
 
  - support Node.js 5.1.0
