@@ -60,5 +60,25 @@
         "size": 21448492
       }
     }
+  },
+  "linux-x86": {
+    "default": "v5.1.0",
+    "modules47": "v5.1.0",
+    "v5.1.0": {
+      "enclose": {
+        "name": "enclose-v5.1.0-linux-x86-20242c4",
+        "size": 24130196
+      }
+    }
+  },
+  "linux-x64": {
+    "default": "v5.1.0",
+    "modules47": "v5.1.0",
+    "v5.1.0": {
+      "enclose": {
+        "name": "enclose-v5.1.0-linux-x64-20242c4",
+        "size": 26849404
+      }
+    }
   }
 }
