@@ -1,3 +1,8 @@
+## 1.0.3 (2015-12-02)
+
+ - bugfixes
+ - improved speed of compiled applications
+
 ## 1.0.2 (2015-11-30)
 
  - not debuggable via SIGUSR1
