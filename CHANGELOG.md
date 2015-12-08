@@ -1,3 +1,9 @@
+## 1.0.4 (2015-12-08)
+
+ - fixed EMFILE error on windows
+ - applied node.js critical update
+ - dropped support of io.js 2.5.0
+
 ## 1.0.3 (2015-12-02)
 
  - bugfixes
