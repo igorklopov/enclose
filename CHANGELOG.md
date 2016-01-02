@@ -1,3 +1,9 @@
+## 1.0.5 (2016-01-02)
+
+ - updated to 4.2.4 and 5.3.0
+ - added "enclose.sync"
+ - minor improvements
+
 ## 1.0.4 (2015-12-08)
 
  - fixed EMFILE error on windows

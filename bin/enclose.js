@@ -9,6 +9,7 @@ var fs = require("fs");
 var path = require("path");
 var assert = require("assert");
 var spawn = require("child_process").spawn;
+var spawnSync = require("child_process").spawnSync;
 var execSync = require("child_process").execSync;
 var binaries_json_name = "binaries.json";
 var binaries_json;
@@ -110,7 +111,7 @@ function get_system() {
 
 }
 
-function exec(args, cb) {
+var exec = function(args, cb) {
 
   if (!cb) {
     cb = function(error) {
@@ -163,31 +164,31 @@ function exec(args, cb) {
   }
 
   var c = spawn(full, args);
-  var counter = 0, code = 0;
+  var counter = 0, status = 0;
 
   c.on("error", function(error) {
     assert(counter < 3);
-    if (error.code === "ENOENT") {
-      if (fs.existsSync(full)) {
-        cb(new Error(
-         "Your OS does not support " +
-          version_obj.version + "-" + suffix + ". " +
-          "Run with or without --x64 flag."
-        ));
-      } else {
+    if (fs.existsSync(full)) {
+      cb(new Error(
+       "Your OS does not support " +
+        version_obj.version + "-" + suffix + ". " +
+        "Run with or without --x64 flag."
+      ));
+    } else {
+      if (error.code === "ENOENT") {
         cb(new Error(
          "Compiler not found for " +
           version_obj.version + "-" + suffix
         ));
+      } else {
+        cb(error);
       }
-    } else {
-      cb(error);
     }
   });
 
   function maybe_exit() {
     if (++counter < 3) return;
-    cb(null, code);
+    cb(null, status);
   }
 
   c.stderr.on("data", function(chunk) {
@@ -206,12 +207,84 @@ function exec(args, cb) {
     maybe_exit();
   });
 
-  c.on("exit", function(code_) {
-    code = code_;
+  c.on("exit", function(status_) {
+    status = status_;
     maybe_exit();
   });
 
-}
+};
+
+exec.sync = function(args) {
+
+  if (!binaries_json) {
+    throw new Error(
+      "File '" + binaries_json_name +
+      "' not found. Reinstall EncloseJS"
+    );
+  }
+
+  var arch;
+
+  if (args.length) {
+    arch = get_arch_from_args(args);
+  } else {
+    arch = get_system();
+  }
+
+  if (!arch) {
+    throw new Error(
+      "Unknown architecture"
+    );
+  }
+
+  var suffix = get_suffix(arch);
+  var version = get_version(args);
+  var version_obj = get_version_obj(version, suffix);
+
+  if (!version_obj) {
+    throw new Error(
+      "Bad version '" + version + "'. " +
+      "See file '" + binaries_json_name + "'"
+    );
+  }
+
+  var full = path.join(
+    __dirname,
+    version_obj.enclose.name
+  );
+
+  if ((args.indexOf("--color") < 0) &&
+      (args.indexOf("--no-color") < 0)) {
+    if (process.stdout.isTTY) {
+      args.push("--color");
+    }
+  }
+
+  var c = spawnSync(full, args, { stdio: "inherit" });
+  var error = c.error;
+
+  if (error) {
+    if (fs.existsSync(full)) {
+      throw new Error(
+       "Your OS does not support " +
+        version_obj.version + "-" + suffix + ". " +
+        "Run with or without --x64 flag."
+      );
+    } else {
+      if (error.code === "ENOENT") {
+        throw new Error(
+         "Compiler not found for " +
+          version_obj.version + "-" + suffix
+        );
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  return c.status;
+
+};
 
 function children(o, cb) {
   Object.keys(o).some(
@@ -241,6 +314,12 @@ function downloads() {
       get_suffix("armv7")
     ]
   }[system];
+
+  if (!suffixes) {
+    throw new Error(
+      "Unknown system " + system
+    );
+  }
 
   var items = [];
 
