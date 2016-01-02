@@ -56,6 +56,7 @@ function get_version(args) {
 
 function get_version_obj(version, suffix) {
   var bjs = binaries_json[suffix];
+  if (!bjs) return null;
   var v = version;
   if (!bjs[v]) v = "v" + v;
   var bjsv = bjs[v];
@@ -146,7 +147,8 @@ var exec = function(args, cb) {
 
   if (!version_obj) {
     return cb(new Error(
-      "Bad version '" + version + "'. " +
+      "Bad version '" + version + "' or suffix '" +
+      suffix + "' or architecture '" + arch + "'. " +
       "See file '" + binaries_json_name + "'"
     ));
   }
@@ -243,7 +245,8 @@ exec.sync = function(args) {
 
   if (!version_obj) {
     throw new Error(
-      "Bad version '" + version + "'. " +
+      "Bad version '" + version + "' or suffix '" +
+      suffix + "' or architecture '" + arch + "'. " +
       "See file '" + binaries_json_name + "'"
     );
   }
