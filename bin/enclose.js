@@ -147,8 +147,8 @@ var exec = function(args, cb) {
 
   if (!version_obj) {
     return cb(new Error(
-      "Bad version '" + version + "' or suffix '" +
-      suffix + "' or architecture '" + arch + "'. " +
+      "Bad version '" + version + "' or " +
+      "architecture '" + arch + "'. " +
       "See file '" + binaries_json_name + "'"
     ));
   }
@@ -245,8 +245,8 @@ exec.sync = function(args) {
 
   if (!version_obj) {
     throw new Error(
-      "Bad version '" + version + "' or suffix '" +
-      suffix + "' or architecture '" + arch + "'. " +
+      "Bad version '" + version + "' or " +
+      "architecture '" + arch + "'. " +
       "See file '" + binaries_json_name + "'"
     );
   }
