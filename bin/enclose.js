@@ -66,14 +66,20 @@ function get_version_obj(version, suffix) {
   return bjsv;
 }
 
+function get_arm_arch() {
+  var cpu = fs.readFileSync("/proc/cpuinfo", "utf8");
+  var found = cpu.match(/CPU architecture: (.?)\n/);
+  if (!found) return "armv6";
+  if (!found[1]) return "armv6";
+  return "armv" + found[1];
+}
+
 function get_arch() {
   var arch = process.arch;
   if (arch === "ia32") return "x86";
   if (arch === "x86") return "x86";
   if (arch === "x64") return "x64";
-  var armv = process.config.variables.arm_version;
-  if (arch === "arm" && armv === "6") return "armv6";
-  if (arch === "arm" && armv === "7") return "armv7";
+  if (arch === "arm") return get_arm_arch();
   return "";
 }
 
