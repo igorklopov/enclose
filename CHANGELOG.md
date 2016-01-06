@@ -1,3 +1,7 @@
+## 1.0.6 (2016-01-06)
+
+ - ARMv7-related improvements
+
 ## 1.0.5 (2016-01-02)
 
  - updated to 4.2.4 and 5.3.0
