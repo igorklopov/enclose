@@ -29,13 +29,12 @@ npm install -g enclose
 Run `enclose` without arguments to see help.
 
 In short, as input you specify the entry file of your project
-`/path/project.js`. As output you get a standalone executable
-`/path/project`. When it is run, it does the same as
-`node /path/project.js`.
+`/path/app.js`. As output you get a standalone executable
+`/path/app`. When it is run, it does the same as `node /path/app.js`
 
 ### Command line of the executable
 
-Command line call `./project a b` is equivalent to `node ./project.js a b`.
+Command line call `./app a b` is equivalent to `node ./app.js a b`
 
 ### Dependencies
 
@@ -89,7 +88,7 @@ function myfunc() { [native code] }
 ### Versions of Node.js
 
 You can choose what runtime version to wrap your project in -
-0.12.x, 2.5.0 (io.js), 4.2.x or stable.
+0.12.x, 4.2.x or 5.x.
 
 ### Vanilla Node.js
 
@@ -109,7 +108,7 @@ Projects like `npm`, `browserify`, `eslint` can be compiled using EncloseJS (see
 [examples directory](https://github.com/igorklopov/enclose/tree/master/examples/22-npm)).
 Probably, your existing project can be compiled too, with minimal
 adjustments. The adjustments preserve the ability to run you project
-via `node ./project.js`
+via `node ./app.js`
 
 ### Platforms
 
@@ -129,8 +128,7 @@ Native modules (.node files) are supported for all platforms
 name to be 'node.exe'. In order to make a module compatible with your
 'myserver.exe' EncloseJS makes a copy of the module, patches
 IAT of the copy (binds it to 'myserver.exe'), and then calls `dlopen`
-against the copy. This workaround will be removed as soon as most
-modules support [win_delay_load_hook](https://github.com/nodejs/node-gyp/blob/master/src/win_delay_load_hook.c).
+against the copy. This workaround will be deprecated soon.
 
 ### License
 
