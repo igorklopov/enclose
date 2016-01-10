@@ -1,3 +1,7 @@
+## 1.0.7 (2016-01-10)
+
+ - node.js 5.4.0
+
 ## 1.0.6 (2016-01-06)
 
  - ARMv7-related improvements
