@@ -1,3 +1,11 @@
+## 1.1.0 (2016-01-28)
+
+ - node.js 4.2.6 and 5.5.0
+ - fixed arrow functions issue #69
+ - temporarily dropped babel and jsx
+ - improved compilation speed
+ - decreased compiler binaries size to download
+
 ## 1.0.7 (2016-01-10)
 
  - node.js 5.4.0

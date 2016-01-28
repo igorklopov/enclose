@@ -269,7 +269,8 @@ exec.sync = function(args) {
     }
   }
 
-  var c = spawnSync(full, args, { stdio: "inherit" });
+  var opts = { stdio: "inherit" };
+  var c = spawnSync(full, args, opts);
   var error = c.error;
 
   if (error) {
