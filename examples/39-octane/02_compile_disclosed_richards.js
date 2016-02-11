@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint curly:0 */
-
 if (require.main === module) {
 
   var flags = [];

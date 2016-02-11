@@ -1,3 +1,10 @@
+## 1.2.0 (2016-02-11)
+
+ - node.js 0.12.10, 4.3.0 and 5.6.0
+ - added process.versions.enclose #82
+ - partial support of 'cluster.fork'
+ - fixed warnings about require literal
+
 ## 1.1.0 (2016-01-28)
 
  - node.js 4.2.6 and 5.5.0

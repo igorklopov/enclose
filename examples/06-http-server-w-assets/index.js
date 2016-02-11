@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint curly:0 */
-
 "use strict";
 
 // ./compile.js

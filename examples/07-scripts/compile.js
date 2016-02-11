@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint curly:0 */
-
 var flags = [];
 var arch = require("../../").system();
 var enclose = require("../../").exec;

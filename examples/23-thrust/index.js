@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint camelcase:0 */
 /* eslint no-process-exit:0 */
 
 "use strict";

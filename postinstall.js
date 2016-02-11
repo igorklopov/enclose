@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-/* eslint camelcase:0 */
-/* eslint curly:0 */
+/* eslint no-bitwise:0 */
 /* eslint no-cond-assign:0 */
 
 "use strict";
@@ -113,7 +112,7 @@ async.mapSeries(downloads, function(download, cb) {
     function(next) {
 
       if (windows) {
-        next();
+        return next();
       } else {
         fs.stat(name, function(error, stat) {
           if (error) return next(error);

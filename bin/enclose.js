@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint camelcase:0 */
-/* eslint curly:0 */
-
 "use strict";
 
 var fs = require("fs");
@@ -120,6 +117,10 @@ function get_system() {
 
 var exec = function(args, cb) {
 
+  if (!args) {
+    args = [];
+  }
+
   if (!cb) {
     cb = function(error) {
       if (error) throw error;
@@ -177,19 +178,19 @@ var exec = function(args, cb) {
   c.on("error", function(error) {
     assert(counter < 3);
     if (fs.existsSync(full)) {
-      cb(new Error(
+      return cb(new Error(
        "Your OS does not support " +
         version_obj.version + "-" + suffix + ". " +
         "Run with or without --x64 flag."
       ));
     } else {
       if (error.code === "ENOENT") {
-        cb(new Error(
+        return cb(new Error(
          "Compiler not found for " +
           version_obj.version + "-" + suffix
         ));
       } else {
-        cb(error);
+        return cb(error);
       }
     }
   });
@@ -222,7 +223,11 @@ var exec = function(args, cb) {
 
 };
 
-exec.sync = function(args) {
+exec.sync = function(args, inspect) {
+
+  if (!args) {
+    args = [];
+  }
 
   if (!binaries_json) {
     throw new Error(
@@ -269,7 +274,8 @@ exec.sync = function(args) {
     }
   }
 
-  var opts = { stdio: "inherit" };
+  var stdio = inspect ? "pipe" : "inherit";
+  var opts = { stdio: stdio };
   var c = spawnSync(full, args, opts);
   var error = c.error;
 
@@ -292,7 +298,7 @@ exec.sync = function(args) {
     }
   }
 
-  return c.status;
+  return inspect ? c : c.status;
 
 };
 

@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint curly:0 */
 /* eslint no-process-exit:0 */
 
 var flags = [];
