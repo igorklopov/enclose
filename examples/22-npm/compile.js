@@ -2,6 +2,8 @@
 
 /* eslint no-process-exit:0 */
 
+"use strict";
+
 var flags = [];
 var platform = process.platform;
 var arch = require("../../").system();
@@ -13,7 +15,7 @@ if (x64) flags.push("--x64");
 
 try {
   require.resolve("npm");
-} catch(error) {
+} catch (error) {
   console.log("Failed to require('npm')");
   console.log("Please run 'npm install' here");
   process.exit(1);

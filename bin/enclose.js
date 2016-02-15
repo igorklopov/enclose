@@ -20,7 +20,7 @@ try {
       )
     ), "utf8"
   );
-} catch(_) {
+} catch (_) {
   assert(_);
 }
 

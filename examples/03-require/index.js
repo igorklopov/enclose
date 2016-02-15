@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+"use strict";
+
 // ./compile.js
 // the generated executable does
 // not need submodule.js on disk.

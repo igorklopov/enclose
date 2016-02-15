@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+"use strict";
+
 var flags = [];
 var arch = require("../../").system();
 var enclose = require("../../").exec;

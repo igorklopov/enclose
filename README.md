@@ -88,7 +88,7 @@ function myfunc() { [native code] }
 ### Versions of Node.js
 
 You can choose what runtime version to wrap your project in -
-0.12.x, 4.2.x or 5.x.
+0.12.x, 4.x or 5.x.
 
 ### Vanilla Node.js
 

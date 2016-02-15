@@ -2,6 +2,8 @@
 
 /* eslint no-process-exit:0 */
 
+"use strict";
+
 var flags = [];
 var arch = require("../../").system();
 var enclose = require("../../").exec;
@@ -12,7 +14,7 @@ if (modules) flags.push("--version", "modules" + modules);
 
 try {
   require.resolve("serialport");
-} catch(error) {
+} catch (error) {
   console.log("Failed to require('serialport')");
   console.log("Please run 'npm install' here");
   process.exit(1);

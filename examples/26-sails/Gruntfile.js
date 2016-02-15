@@ -12,6 +12,8 @@
  * Check out the `tasks` directory instead.
  */
 
+"use strict";
+
 module.exports = function(grunt) {
 
 
