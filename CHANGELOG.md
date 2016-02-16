@@ -1,3 +1,7 @@
+## 1.3.1 (2016-02-16)
+
+ - fixed regression
+
 ## 1.3.0 (2016-02-15)
 
  - minor improvements
