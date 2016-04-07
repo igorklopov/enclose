@@ -1,3 +1,14 @@
+## 2.0.0 (2016-04-08)
+
+ - node.js versions updates
+ - config 'dirs' are ignored, use only 'scripts' and 'assets'
+ - supports cluster.fork, child_process.fork and 'spawn'ing self
+ - consumes less memory when compiling big projects
+ - supports CentOS 6.7 or higher
+ - more informative error messages
+ - features=no is the only option
+ - minor bugfixes and improvements
+
 ## 1.3.1 (2016-02-16)
 
  - fixed regression

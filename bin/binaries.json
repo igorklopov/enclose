@@ -1,176 +1,176 @@
 {
   "win32": {
-    "default": "v4.3.0",
-    "modules14": "v0.12.10",
-    "v0.12.10": {
+    "default": "v4.4.2",
+    "modules14": "v0.12.13",
+    "v0.12.13": {
       "enclose": {
-        "name": "enclose-v0.12.10-win32-aad2171.exe",
-        "size": 9150888
+        "name": "enclose-v0.12.13-win32-2eb54e9.exe",
+        "size": 8483224
       }
     },
-    "v4": "v4.3.0",
-    "modules46": "v4.3.0",
-    "v4.3.0": {
+    "v4": "v4.4.2",
+    "modules46": "v4.4.2",
+    "v4.4.2": {
       "enclose": {
-        "name": "enclose-v4.3.0-win32-aad2171.exe",
-        "size": 10104212
+        "name": "enclose-v4.4.2-win32-2eb54e9.exe",
+        "size": 9569860
       }
     },
-    "v5": "v5.6.0",
-    "modules47": "v5.6.0",
-    "v5.6.0": {
+    "v5": "v5.10.0",
+    "modules47": "v5.10.0",
+    "v5.10.0": {
       "enclose": {
-        "name": "enclose-v5.6.0-win32-aad2171.exe",
-        "size": 10382200
+        "name": "enclose-v5.10.0-win32-2eb54e9.exe",
+        "size": 9797752
       }
     }
   },
   "win64": {
-    "default": "v4.3.0",
-    "modules14": "v0.12.10",
-    "v0.12.10": {
+    "default": "v4.4.2",
+    "modules14": "v0.12.13",
+    "v0.12.13": {
       "enclose": {
-        "name": "enclose-v0.12.10-win64-aad2171.exe",
-        "size": 10838968
+        "name": "enclose-v0.12.13-win64-2eb54e9.exe",
+        "size": 10145812
       }
     },
-    "v4": "v4.3.0",
-    "modules46": "v4.3.0",
-    "v4.3.0": {
+    "v4": "v4.4.2",
+    "modules46": "v4.4.2",
+    "v4.4.2": {
       "enclose": {
-        "name": "enclose-v4.3.0-win64-aad2171.exe",
-        "size": 12439476
+        "name": "enclose-v4.4.2-win64-2eb54e9.exe",
+        "size": 11893444
       }
     },
-    "v5": "v5.6.0",
-    "modules47": "v5.6.0",
-    "v5.6.0": {
+    "v5": "v5.10.0",
+    "modules47": "v5.10.0",
+    "v5.10.0": {
       "enclose": {
-        "name": "enclose-v5.6.0-win64-aad2171.exe",
-        "size": 12743140
-      }
-    }
-  },
-  "linux-x86": {
-    "default": "v4.3.0",
-    "modules14": "v0.12.10",
-    "v0.12.10": {
-      "enclose": {
-        "name": "enclose-v0.12.10-linux-x86-0f2810a",
-        "size": 15036096
-      }
-    },
-    "v4": "v4.3.0",
-    "modules46": "v4.3.0",
-    "v4.3.0": {
-      "enclose": {
-        "name": "enclose-v4.3.0-linux-x86-0f2810a",
-        "size": 16927572
-      }
-    },
-    "v5": "v5.6.0",
-    "modules47": "v5.6.0",
-    "v5.6.0": {
-      "enclose": {
-        "name": "enclose-v5.6.0-linux-x86-0f2810a",
-        "size": 17305836
-      }
-    }
-  },
-  "linux-x64": {
-    "default": "v4.3.0",
-    "modules14": "v0.12.10",
-    "v0.12.10": {
-      "enclose": {
-        "name": "enclose-v0.12.10-linux-x64-0f2810a",
-        "size": 15594468
-      }
-    },
-    "v4": "v4.3.0",
-    "modules46": "v4.3.0",
-    "v4.3.0": {
-      "enclose": {
-        "name": "enclose-v4.3.0-linux-x64-0f2810a",
-        "size": 17771940
-      }
-    },
-    "v5": "v5.6.0",
-    "modules47": "v5.6.0",
-    "v5.6.0": {
-      "enclose": {
-        "name": "enclose-v5.6.0-linux-x64-0f2810a",
-        "size": 18184852
+        "name": "enclose-v5.10.0-win64-2eb54e9.exe",
+        "size": 12141876
       }
     }
   },
   "darwin-x86": {
-    "default": "v4.3.0",
-    "modules14": "v0.12.10",
-    "v0.12.10": {
+    "default": "v4.4.2",
+    "modules14": "v0.12.13",
+    "v0.12.13": {
       "enclose": {
-        "name": "enclose-v0.12.10-darwin-x86-0f2810a",
-        "size": 12262524
+        "name": "enclose-v0.12.13-darwin-x86-20f9c37",
+        "size": 11581464
       }
     },
-    "v4": "v4.3.0",
-    "modules46": "v4.3.0",
-    "v4.3.0": {
+    "v4": "v4.4.2",
+    "modules46": "v4.4.2",
+    "v4.4.2": {
       "enclose": {
-        "name": "enclose-v4.3.0-darwin-x86-0f2810a",
-        "size": 13632772
+        "name": "enclose-v4.4.2-darwin-x86-20f9c37",
+        "size": 13103760
       }
     },
-    "v5": "v5.6.0",
-    "modules47": "v5.6.0",
-    "v5.6.0": {
+    "v5": "v5.10.0",
+    "modules47": "v5.10.0",
+    "v5.10.0": {
       "enclose": {
-        "name": "enclose-v5.6.0-darwin-x86-0f2810a",
-        "size": 13992384
+        "name": "enclose-v5.10.0-darwin-x86-20f9c37",
+        "size": 13409336
       }
     }
   },
   "darwin-x64": {
-    "default": "v4.3.0",
-    "modules14": "v0.12.10",
-    "v0.12.10": {
+    "default": "v4.4.2",
+    "modules14": "v0.12.13",
+    "v0.12.13": {
       "enclose": {
-        "name": "enclose-v0.12.10-darwin-x64-0f2810a",
-        "size": 13658280
+        "name": "enclose-v0.12.13-darwin-x64-20f9c37",
+        "size": 12959096
       }
     },
-    "v4": "v4.3.0",
-    "modules46": "v4.3.0",
-    "v4.3.0": {
+    "v4": "v4.4.2",
+    "modules46": "v4.4.2",
+    "v4.4.2": {
       "enclose": {
-        "name": "enclose-v4.3.0-darwin-x64-0f2810a",
-        "size": 15350320
+        "name": "enclose-v4.4.2-darwin-x64-20f9c37",
+        "size": 14798888
       }
     },
-    "v5": "v5.6.0",
-    "modules47": "v5.6.0",
-    "v5.6.0": {
+    "v5": "v5.10.0",
+    "modules47": "v5.10.0",
+    "v5.10.0": {
       "enclose": {
-        "name": "enclose-v5.6.0-darwin-x64-0f2810a",
-        "size": 15705628
+        "name": "enclose-v5.10.0-darwin-x64-20f9c37",
+        "size": 15096052
       }
     }
   },
   "linux-armv7": {
-    "default": "v4.3.0",
-    "v4": "v4.3.0",
-    "modules46": "v4.3.0",
-    "v4.3.0": {
+    "default": "v4.4.2",
+    "v4": "v4.4.2",
+    "modules46": "v4.4.2",
+    "v4.4.2": {
       "enclose": {
-        "name": "enclose-v4.3.0-linux-armv7-0f2810a",
-        "size": 14625024
+        "name": "enclose-v4.4.2-linux-armv7-670d224",
+        "size": 14058560
       }
     },
-    "v5": "v5.6.0",
-    "modules47": "v5.6.0",
-    "v5.6.0": {
+    "v5": "v5.10.0",
+    "modules47": "v5.10.0",
+    "v5.10.0": {
       "enclose": {
-        "name": "enclose-v5.6.0-linux-armv7-0f2810a",
-        "size": 14995664
+        "name": "enclose-v5.10.0-linux-armv7-670d224",
+        "size": 14375204
+      }
+    }
+  },
+  "linux-x86": {
+    "default": "v4.4.2",
+    "modules14": "v0.12.13",
+    "v0.12.13": {
+      "enclose": {
+        "name": "enclose-v0.12.13-linux-x86-bae0f1f",
+        "size": 13685724
+      }
+    },
+    "v4": "v4.4.2",
+    "modules46": "v4.4.2",
+    "v4.4.2": {
+      "enclose": {
+        "name": "enclose-v4.4.2-linux-x86-bae0f1f",
+        "size": 15700932
+      }
+    },
+    "v5": "v5.10.0",
+    "modules47": "v5.10.0",
+    "v5.10.0": {
+      "enclose": {
+        "name": "enclose-v5.10.0-linux-x86-bae0f1f",
+        "size": 16029032
+      }
+    }
+  },
+  "linux-x64": {
+    "default": "v4.4.2",
+    "modules14": "v0.12.13",
+    "v0.12.13": {
+      "enclose": {
+        "name": "enclose-v0.12.13-linux-x64-bae0f1f",
+        "size": 14428492
+      }
+    },
+    "v4": "v4.4.2",
+    "modules46": "v4.4.2",
+    "v4.4.2": {
+      "enclose": {
+        "name": "enclose-v4.4.2-linux-x64-bae0f1f",
+        "size": 16679292
+      }
+    },
+    "v5": "v5.10.0",
+    "modules47": "v5.10.0",
+    "v5.10.0": {
+      "enclose": {
+        "name": "enclose-v5.10.0-linux-x64-bae0f1f",
+        "size": 17032684
       }
     }
   }

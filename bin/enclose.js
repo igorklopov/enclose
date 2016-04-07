@@ -43,7 +43,7 @@ function get_suffix(arch) {
   }[process.platform][arch];
 }
 
-function get_version(args) {
+function get_version_from_args(args) {
   var pos =
     (args.indexOf("-v") + 1) ||
     (args.indexOf("--version") + 1);
@@ -149,7 +149,7 @@ var exec = function(args, cb) {
   }
 
   var suffix = get_suffix(arch);
-  var version = get_version(args);
+  var version = get_version_from_args(args);
   var version_obj = get_version_obj(version, suffix);
 
   if (!version_obj) {
@@ -251,7 +251,7 @@ exec.sync = function(args, inspect) {
   }
 
   var suffix = get_suffix(arch);
-  var version = get_version(args);
+  var version = get_version_from_args(args);
   var version_obj = get_version_obj(version, suffix);
 
   if (!version_obj) {
@@ -358,7 +358,9 @@ if (module.parent) {
     exec: exec,
     downloads: downloads,
     arch: get_arch,
-    system: get_system
+    system: get_system,
+    version_from_args: get_version_from_args,
+    arch_from_args: get_arch_from_args
   };
 } else {
   exec(

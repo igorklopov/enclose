@@ -55,19 +55,6 @@ if (require.main === module) {
 
   module.exports = {
 
-    dirs: [
-      ".tmp",
-      ".tmp/**/*",
-      "api",
-      "api/**/*",
-      "assets",
-      "assets/**/*",
-      "config",
-      "config/**/*",
-      "views",
-      "views/**/*"
-    ],
-
     scripts: [
       "api/**/*.js",
       "config/**/*.js"
