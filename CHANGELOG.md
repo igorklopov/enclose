@@ -1,3 +1,7 @@
+## 2.0.1 (2016-04-20)
+
+ - minor bugfixes and improvements
+
 ## 2.0.0 (2016-04-08)
 
  - node.js versions updates
