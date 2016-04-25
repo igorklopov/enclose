@@ -1,3 +1,7 @@
+## 2.0.2 (2016-04-25)
+
+ - minor bugfixes and improvements
+
 ## 2.0.1 (2016-04-20)
 
  - minor bugfixes and improvements
