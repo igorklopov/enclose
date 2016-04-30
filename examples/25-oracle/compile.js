@@ -6,8 +6,6 @@
 
 var flags = [];
 var enclose = require("../../").exec;
-var modules = process.versions.modules;
-if (modules) flags.push("--version", "modules" + modules);
 
 try {
   require.resolve("oracle");
