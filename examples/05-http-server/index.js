@@ -2,8 +2,6 @@
 
 "use strict";
 
-// ./compile.js
-
 var port = 1337;
 var http = require("http");
 

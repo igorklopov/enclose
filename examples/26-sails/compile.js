@@ -41,10 +41,7 @@ if (require.main === module) {
     if (error) throw error;
     // sails.childProcesses[0].kill("SIGINT");
     var flags = [];
-    var arch = require("../../").system();
     var enclose = require("../../").exec;
-    var x64 = (arch === "x64");
-    if (x64) flags.push("--x64");
     // flags.push("--loglevel", "info");
     flags.push("--config", process.argv[1]);
     flags.push("./app.js");

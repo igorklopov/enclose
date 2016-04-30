@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint no-continue:0 */
+
 "use strict";
 
 var fs = require("fs");
@@ -7,16 +9,15 @@ var path = require("path");
 var assert = require("assert");
 var spawn = require("child_process").spawn;
 var spawnSync = require("child_process").spawnSync;
-var execSync = require("child_process").execSync;
-var binaries_json_name = "binaries.json";
-var binaries_json;
+var binariesJsonName = "binaries.json";
+var binariesJson;
 
 try {
-  binaries_json = JSON.parse(
+  binariesJson = JSON.parse(
     fs.readFileSync(
       path.join(
         __dirname,
-        binaries_json_name
+        binariesJsonName
       )
     ), "utf8"
   );
@@ -24,7 +25,7 @@ try {
   assert(_);
 }
 
-function get_suffix(arch) {
+function getSuffix(arch) {
   return {
     win32: {
       x86: "win32",
@@ -43,83 +44,127 @@ function get_suffix(arch) {
   }[process.platform][arch];
 }
 
-function get_version_from_args(args) {
-  var pos =
-    (args.indexOf("-v") + 1) ||
-    (args.indexOf("--version") + 1);
-  if (!pos) return "default";
-  return args[pos];
+function argsToObjectWithoutDefaults(args) {
+  var o = {};
+  for (var i = 0; i < args.length;) {
+    var n = args[i];
+    if (i + 1 < args.length) {
+      var v = args[i + 1];
+      if (n === "-v" || n === "--version") {
+        o.version = v;
+        i += 2;
+        continue;
+      }
+      if (n === "-a" || n === "--arch") {
+        o.arch = v;
+        i += 2;
+        continue;
+      }
+    }
+    if (n === "-x" || n === "--x64") { // TODO remove
+      o.arch = "x64";
+      i += 1;
+      continue;
+    }
+    i += 1;
+  }
+  return o;
 }
 
-function get_version_obj(version, suffix) {
-  var bjs = binaries_json[suffix];
+function getArmArch() {
+  var cpu = fs.readFileSync("/proc/cpuinfo", "utf8");
+  var found = cpu.match(/CPU architecture: (.?)\n/);
+  if (!found || !found[1]) return "armv6";
+  return "armv" + found[1];
+}
+
+function getArch() {
+  var arch = process.arch;
+  if (arch === "ia32") arch = "x86";
+  if (arch === "arm") arch = getArmArch();
+  return arch;
+}
+
+function getVersion() {
+  return "modules" + process.versions.modules;
+}
+
+function argsToObject(args) {
+  var o = argsToObjectWithoutDefaults(args);
+  if (!o.arch) o.arch = getArch();
+  if (!o.version) {
+    o.version = getVersion();
+    o.tryDefaultVersion = true;
+  }
+  return o;
+}
+
+function getBinary(version, suffix) {
+  var bjs = binariesJson[suffix];
   if (!bjs) return null;
   var v = version;
   if (!bjs[v]) v = "v" + v;
   var bjsv = bjs[v];
   var link = (typeof bjsv === "string");
-  if (link) return get_version_obj(bjsv, suffix);
+  if (link) return getBinary(bjsv, suffix);
   if (bjsv) bjsv.version = v;
   return bjsv;
 }
 
-function get_arm_arch() {
-  var cpu = fs.readFileSync("/proc/cpuinfo", "utf8");
-  var found = cpu.match(/CPU architecture: (.?)\n/);
-  if (!found) return "armv6";
-  if (!found[1]) return "armv6";
-  return "armv" + found[1];
-}
+function getBinaryFromArgs(args) {
 
-function get_arch() {
-  var arch = process.arch;
-  if (arch === "ia32") return "x86";
-  if (arch === "x86") return "x86";
-  if (arch === "x64") return "x64";
-  if (arch === "arm") return get_arm_arch();
-  return "";
-}
+  var argo = argsToObject(args);
 
-function get_arch_from_args(args) {
-  var arch = get_arch();
-  var x64 = (args.indexOf("-x") + 1) ||
-            (args.indexOf("--x64") + 1);
-  if (arch === "x86" && x64) return "x64";
-  if (arch === "x86") return "x86";
-  if (arch === "x64" && x64) return "x64";
-  if (arch === "x64") return "x86";
-  return arch;
-}
-
-function get_system() {
-
-  var arch = get_arch();
-
-  if (arch === "x86" &&
-      process.platform === "win32" &&
-      process.env.PROCESSOR_ARCHITEW6432) {
-    arch = "x64";
+  if (!binariesJson) {
+    throw new Error(
+      "File '" + binariesJsonName +
+      "' not found. Reinstall EncloseJS"
+    );
   }
 
-  if (arch === "x86" &&
-      process.platform === "linux" &&
-      execSync("uname -m").toString() === "x86_64\n") {
-    arch = "x64";
+  var arch = argo.arch;
+  var suffix = getSuffix(arch);
+  var version = argo.version;
+  var binary = getBinary(version, suffix);
+  if (!binary && argo.tryDefaultVersion) {
+    binary = getBinary("default", suffix);
   }
 
-  if (process.platform === "darwin") {
-    arch = "x64";
+  if (!binary) {
+    throw new Error(
+      "Bad version '" + version + "' or " +
+      "architecture '" + arch + "'. " +
+      "See file '" + binariesJsonName + "'"
+    );
   }
 
-  return arch;
+  binary.suffix = suffix;
+  return binary;
+
+}
+
+function handleSpawnError(error, full, binary) {
+
+  if (fs.existsSync(full)) {
+    throw new Error(
+     "Your OS does not support " +
+      binary.version + "-" + binary.suffix + ". " +
+      "Modify your --arch flag."
+    );
+  } else {
+    if (error.code === "ENOENT") {
+      throw new Error(
+       "Compiler not found for " +
+        binary.version + "-" + binary.suffix
+      );
+    } else {
+      throw error;
+    }
+  }
 
 }
 
 var exec = function(args, cb) {
-
-  if (!args) {
-    args = [];
-  }
 
   if (!cb) {
     cb = function(error) {
@@ -127,152 +172,49 @@ var exec = function(args, cb) {
     };
   }
 
-  if (!binaries_json) {
-    return cb(new Error(
-      "File '" + binaries_json_name +
-      "' not found. Reinstall EncloseJS"
-    ));
-  }
+  if (!args) args = [];
+  var binary;
 
-  var arch;
-
-  if (args.length) {
-    arch = get_arch_from_args(args);
-  } else {
-    arch = get_system();
-  }
-
-  if (!arch) {
-    return cb(new Error(
-      "Unknown architecture"
-    ));
-  }
-
-  var suffix = get_suffix(arch);
-  var version = get_version_from_args(args);
-  var version_obj = get_version_obj(version, suffix);
-
-  if (!version_obj) {
-    return cb(new Error(
-      "Bad version '" + version + "' or " +
-      "architecture '" + arch + "'. " +
-      "See file '" + binaries_json_name + "'"
-    ));
+  try {
+    binary = getBinaryFromArgs(args);
+  } catch (error) {
+    return cb(error);
   }
 
   var full = path.join(
     __dirname,
-    version_obj.enclose.name
+    binary.enclose.name
   );
 
-  if ((args.indexOf("--color") < 0) &&
-      (args.indexOf("--no-color") < 0)) {
-    if (process.stdout.isTTY) {
-      args.push("--color");
-    }
-  }
-
-  var c = spawn(full, args);
-  var counter = 0, status = 0;
+  var opts = { stdio: "inherit" };
+  var c = spawn(full, args, opts);
+  var counter = 0;
 
   c.on("error", function(error) {
-    assert(counter < 3);
-    if (fs.existsSync(full)) {
-      return cb(new Error(
-       "Your OS does not support " +
-        version_obj.version + "-" + suffix + ". " +
-        "Run with or without --x64 flag."
-      ));
-    } else {
-      if (error.code === "ENOENT") {
-        return cb(new Error(
-         "Compiler not found for " +
-          version_obj.version + "-" + suffix
-        ));
-      } else {
-        return cb(error);
-      }
+    assert(++counter === 0);
+    try {
+      handleSpawnError(error, full, binary);
+    } catch (error2) {
+      return cb(error2);
     }
   });
 
-  function maybe_exit() {
-    if (++counter < 3) return;
+  c.on("exit", function(status) {
+    if (counter) return;
     cb(null, status);
-  }
-
-  c.stderr.on("data", function(chunk) {
-    process.stderr.write(chunk);
-  });
-
-  c.stderr.on("end", function() {
-    maybe_exit();
-  });
-
-  c.stdout.on("data", function(chunk) {
-    process.stdout.write(chunk);
-  });
-
-  c.stdout.on("end", function() {
-    maybe_exit();
-  });
-
-  c.on("exit", function(status_) {
-    status = status_;
-    maybe_exit();
   });
 
 };
 
 exec.sync = function(args, inspect) {
 
-  if (!args) {
-    args = [];
-  }
-
-  if (!binaries_json) {
-    throw new Error(
-      "File '" + binaries_json_name +
-      "' not found. Reinstall EncloseJS"
-    );
-  }
-
-  var arch;
-
-  if (args.length) {
-    arch = get_arch_from_args(args);
-  } else {
-    arch = get_system();
-  }
-
-  if (!arch) {
-    throw new Error(
-      "Unknown architecture"
-    );
-  }
-
-  var suffix = get_suffix(arch);
-  var version = get_version_from_args(args);
-  var version_obj = get_version_obj(version, suffix);
-
-  if (!version_obj) {
-    throw new Error(
-      "Bad version '" + version + "' or " +
-      "architecture '" + arch + "'. " +
-      "See file '" + binaries_json_name + "'"
-    );
-  }
+  if (!args) args = [];
+  var binary = getBinaryFromArgs(args);
 
   var full = path.join(
     __dirname,
-    version_obj.enclose.name
+    binary.enclose.name
   );
-
-  if ((args.indexOf("--color") < 0) &&
-      (args.indexOf("--no-color") < 0)) {
-    if (process.stdout.isTTY) {
-      args.push("--color");
-    }
-  }
 
   var stdio = inspect ? "pipe" : "inherit";
   var opts = { stdio: stdio };
@@ -280,22 +222,7 @@ exec.sync = function(args, inspect) {
   var error = c.error;
 
   if (error) {
-    if (fs.existsSync(full)) {
-      throw new Error(
-       "Your OS does not support " +
-        version_obj.version + "-" + suffix + ". " +
-        "Run with or without --x64 flag."
-      );
-    } else {
-      if (error.code === "ENOENT") {
-        throw new Error(
-         "Compiler not found for " +
-          version_obj.version + "-" + suffix
-        );
-      } else {
-        throw error;
-      }
-    }
+    return handleSpawnError(error, full, binary);
   }
 
   return inspect ? c : c.status;
@@ -312,34 +239,24 @@ function children(o, cb) {
 
 function downloads() {
 
-  var system = get_system();
+  var arch = getArch();
 
   var suffixes = {
-    x86: [
-      get_suffix("x86")
-    ],
-    x64: [
-      get_suffix("x86"),
-      get_suffix("x64")
-    ],
-    armv6: [
-      get_suffix("armv6")
-    ],
-    armv7: [
-      get_suffix("armv6"),
-      get_suffix("armv7")
-    ]
-  }[system];
+    x86: [ "x86" ],
+    x64: [ "x86", "x64" ],
+    armv6: [ "armv6" ],
+    armv7: [ "armv6", "armv7" ]
+  }[arch].map(getSuffix);
 
   if (!suffixes) {
     throw new Error(
-      "Unknown system " + system
+      "Unknown arch " + arch
     );
   }
 
   var items = [];
 
-  children(binaries_json, function(suffix, key) {
+  children(binariesJson, function(suffix, key) {
     if (suffixes.indexOf(key) < 0) return; // *****
     children(suffix, function(version) {
       if (typeof version !== "object") return; // "default" string
@@ -357,10 +274,7 @@ if (module.parent) {
   module.exports = {
     exec: exec,
     downloads: downloads,
-    arch: get_arch,
-    system: get_system,
-    version_from_args: get_version_from_args,
-    arch_from_args: get_arch_from_args
+    argsToObject: argsToObject
   };
 } else {
   exec(

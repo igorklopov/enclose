@@ -6,12 +6,9 @@
 
 var flags = [];
 var platform = process.platform;
-var arch = require("../../").system();
 var enclose = require("../../").exec;
 var windows = (platform === "win32");
 var exe = windows ? ".exe" : "";
-var x64 = (arch === "x64");
-if (x64) flags.push("--x64");
 
 try {
   require.resolve("eslint");

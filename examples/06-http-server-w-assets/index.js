@@ -2,7 +2,6 @@
 
 "use strict";
 
-// ./compile.js
 // the generated executable does
 // not need assets directory on disk,
 // it may be deployed as standalone
