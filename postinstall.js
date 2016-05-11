@@ -2,6 +2,7 @@
 
 /* eslint no-bitwise:0 */
 /* eslint no-cond-assign:0 */
+/* eslint no-use-before-define:0 */
 
 "use strict";
 
@@ -9,9 +10,8 @@ var fs = require("fs");
 var path = require("path");
 var parse = require("url").parse;
 var format = require("url").format;
-var http = require("http");
+var crypto = require("crypto");
 var https = require("https");
-var httpx = function(p) { return p.protocol === "https:" ? https : http; };
 var async = require("async");
 var windows = process.platform === "win32";
 var enclose = require("./bin/enclose.js");
@@ -22,14 +22,41 @@ process.stdout.write("Downloading precompiled binaries. Please wait ...\n");
 
 async.mapSeries(downloads, function(download, cb) {
 
-  process.stdout.write("Downloading " + download.name + " ...");
-
-  var name = path.join(__dirname, "bin", download.name);
+  var name = download.name;
+  process.stdout.write("Downloading " + name + " ...");
+  var fsname = path.join(__dirname, "bin", name);
 
   async.waterfall([
     function(next) {
 
-      var file = fs.createWriteStream(name);
+      var signature = "";
+
+      function finish(error) {
+        next(error, signature);
+      }
+
+      var loc = location(".sha256");
+      https.get(loc, function(res) {
+        if (res.statusCode !== 200) {
+          return finish(new Error([
+            res.statusCode, loc
+          ]));
+        }
+        res.on("data", function(chunk) {
+          signature += chunk.toString();
+        }).on("end", function() {
+          finish();
+        });
+      }).on("error", function(error) {
+        finish(error);
+      });
+
+    },
+    function(signature, next) {
+
+      var file = fs.createWriteStream(fsname);
+      var hash = crypto.createHash("sha256");
+      hash.setEncoding("hex");
       var read = 0;
 
       var thresholds = [
@@ -55,56 +82,52 @@ async.mapSeries(downloads, function(download, cb) {
       }
 
       function remove(error) {
-        fs.unlink(name, function() {
+        fs.unlink(fsname, function() {
           next(error);
         });
       }
 
       function end(back) {
         file.end(function() {
-          back();
+          hash.end(function() {
+            back();
+          });
         });
       }
 
-      function failure(error) {
+      function finish(error) {
         end(function() {
-          remove(new Error(
-            error.message + ", " + download.name
-          ));
-        });
-      }
-
-      function success() {
-        end(function() {
+          if (error) {
+            return remove(error);
+          }
+          var have = hash.read();
+          if (have !== signature) {
+            return remove(new Error([
+              name, have, signature
+            ]));
+          }
           process.stdout.write("\n");
           next();
         });
       }
 
       file.on("open", function() {
-        var loc = bucket + "/" + download.name;
-        var p = parse(loc), key, key_part;
-        if (key = process.env.ENCLOSEJS_KEY) {
-          if (key_part = key.split(".")[0]) {
-            p.pathname = "/" + key_part + p.pathname;
-            loc = format(p);
-          }
-        }
-        httpx(p).get(loc, function(res) {
+        var loc = location();
+        https.get(loc, function(res) {
           if (res.statusCode !== 200) {
-            // res.pipe(process.stdout);
-            return failure(new Error(
-              "Status code is " + res.statusCode
-            ));
+            return finish(new Error([
+              res.statusCode, loc
+            ]));
           }
           res.on("data", function(chunk) {
             file.write(chunk);
+            hash.write(chunk);
             progress(chunk);
           }).on("end", function() {
-            success();
+            finish();
           });
         }).on("error", function(error) {
-          return failure(error);
+          finish(error);
         });
       });
 
@@ -114,15 +137,27 @@ async.mapSeries(downloads, function(download, cb) {
       if (windows) {
         return next();
       } else {
-        fs.stat(name, function(error, stat) {
+        fs.stat(fsname, function(error, stat) {
           if (error) return next(error);
           var plusx = (stat.mode | 64 | 8).toString(8).slice(-3);
-          fs.chmod(name, plusx, next);
+          fs.chmod(fsname, plusx, next);
         });
       }
 
     }
   ], cb);
+
+  function location(append) {
+    var url = bucket + "/" + name + (append || "");
+    var p = parse(url), key, key_part;
+    if (key = process.env.ENCLOSEJS_KEY) {
+      if (key_part = key.split(".")[0]) {
+        p.pathname = "/" + key_part + p.pathname;
+        url = format(p);
+      }
+    }
+    return url;
+  }
 
 }, function(error) {
   if (error) {

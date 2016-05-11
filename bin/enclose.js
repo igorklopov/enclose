@@ -44,31 +44,40 @@ function getSuffix(arch) {
   }[process.platform][arch];
 }
 
-function argsToObjectWithoutDefaults(args) {
-  var o = {};
+function argsToObject(args) {
+  var o = { other: [] };
   for (var i = 0; i < args.length;) {
     var n = args[i];
     if (i + 1 < args.length) {
       var v = args[i + 1];
-      if (n === "-v" || n === "--version") {
-        o.version = v;
-        i += 2;
-        continue;
-      }
       if (n === "-a" || n === "--arch") {
         o.arch = v;
         i += 2;
         continue;
       }
+      if (n === "-v" || n === "--version") {
+        o.version = v;
+        i += 2;
+        continue;
+      }
+      if (n === "-l" || n === "--loglevel") {
+        o.loglevel = v;
+        i += 2;
+        continue;
+      }
     }
-    if (n === "-x" || n === "--x64") { // TODO remove
-      o.arch = "x64";
-      i += 1;
-      continue;
-    }
+    o.other.push(n);
     i += 1;
   }
   return o;
+}
+
+function objectToArgs(argo) {
+  var s = argo.other.slice();
+  if (argo.arch) s.push("-a", argo.arch);
+  if (argo.version) s.push("-v", argo.version);
+  if (argo.loglevel) s.push("-l", argo.loglevel);
+  return s;
 }
 
 function getArmArch() {
@@ -89,9 +98,11 @@ function getVersion() {
   return "modules" + process.versions.modules;
 }
 
-function argsToObject(args) {
-  var o = argsToObjectWithoutDefaults(args);
-  if (!o.arch) o.arch = getArch();
+function argsToObjectDefaults(args) {
+  var o = argsToObject(args);
+  if (!o.arch) {
+    o.arch = getArch();
+  }
   if (!o.version) {
     o.version = getVersion();
     o.tryDefaultVersion = true;
@@ -113,7 +124,7 @@ function getBinary(version, suffix) {
 
 function getBinaryFromArgs(args) {
 
-  var argo = argsToObject(args);
+  var argo = argsToObjectDefaults(args);
 
   if (!binariesJson) {
     throw new Error(
@@ -155,7 +166,8 @@ function handleSpawnError(error, full, binary) {
     if (error.code === "ENOENT") {
       throw new Error(
        "Compiler not found for " +
-        binary.version + "-" + binary.suffix
+        binary.version + "-" + binary.suffix + ". " +
+       "Expected " + full
       );
     } else {
       throw error;
@@ -216,7 +228,7 @@ exec.sync = function(args, inspect) {
     binary.enclose.name
   );
 
-  var stdio = inspect ? "pipe" : "inherit";
+  var stdio = inspect || "inherit";
   var opts = { stdio: stdio };
   var c = spawnSync(full, args, opts);
   var error = c.error;
@@ -274,7 +286,9 @@ if (module.parent) {
   module.exports = {
     exec: exec,
     downloads: downloads,
-    argsToObject: argsToObject
+    argsToObject: argsToObject,
+    objectToArgs: objectToArgs,
+    arch: getArch
   };
 } else {
   exec(
