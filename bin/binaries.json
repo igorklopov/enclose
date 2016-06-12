@@ -147,5 +147,24 @@
         "size": 20578820
       }
     }
+  },
+  "linux-armv6": {
+    "default": "v4.4.5",
+    "v4": "v4.4.5",
+    "modules46": "v4.4.5",
+    "v4.4.5": {
+      "enclose": {
+        "name": "enclose-v4.4.5-linux-armv6-ecd3068",
+        "size": 14390972
+      }
+    },
+    "v6": "v6.2.0",
+    "modules48": "v6.2.0",
+    "v6.2.0": {
+      "enclose": {
+        "name": "enclose-v6.2.0-linux-armv6-ecd3068",
+        "size": 20897260
+      }
+    }
   }
 }
