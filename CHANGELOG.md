@@ -1,3 +1,8 @@
+## 2.2.0 (2016-08-08)
+
+ - node.js 0.12.15, 4.4.7 and 6.3.1
+ - fixes for #62 and #104
+
 ## 2.1.0 (2016-06-07)
 
  - speeds up compiled applications
