@@ -206,7 +206,7 @@ var exec = function(args, cb) {
   var counter = 0;
 
   c.on("error", function(error) {
-    assert(++counter === 0);
+    counter += 1;
     try {
       handleSpawnError(error, full, binary);
     } catch (error2) {
