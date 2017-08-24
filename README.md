@@ -1,3 +1,11 @@
+## This project is deprecated
+
+Dear users of EncloseJS. I highly encourage you to switch to https://github.com/zeit/pkg.
+
+This a rewritten successor of EncloseJS. It is open source, and all improvements will go there.
+
+-----------
+
 # EncloseJS
 
 Compile your Node.js project into an executable
